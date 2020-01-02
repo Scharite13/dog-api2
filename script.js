@@ -1,13 +1,18 @@
 "use strict"
 
 function getDogImage(numInput){
-  if (numInput < 3){
+  if (numInput < 3 && numInput >= 0){
     fetch("https://dog.ceo/api/breeds/image/random/3")
     .then(response => response.json())
     .then(responseJson => displayImage(responseJson));
-  }else if (numInput > 50){
+  }
+  else if (numInput > 50){
     return alert("Choose number 50 of less.");
-  }else {
+  }
+  else if (numInput < 0){
+    return alert ("Number cannot be negative.");
+  }
+  else {
     fetch(`https://dog.ceo/api/breeds/image/random/${numInput}`)
     .then (response => response.json())
     .then (responseJson => displayImage(responseJson))
